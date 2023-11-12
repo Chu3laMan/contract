@@ -1,12 +1,15 @@
 package co.chu3la.contract.Repository;
 
+import co.chu3la.contract.Integration.AbstractContainerBaseTest;
 import co.chu3la.contract.domain.Transaction;
 import co.chu3la.contract.repository.TransactionRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
@@ -16,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class TransactionRepositoryTest {
+public class TransactionRepositoryTest extends AbstractContainerBaseTest {
 
     @Autowired
     TransactionRepository transactionRepository;
