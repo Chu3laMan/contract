@@ -12,7 +12,8 @@ import java.util.List;
 @Service
 public class TransactionService {
 
-    @Autowired
+
+    @Autowired(required = true)
     private TransactionRepository transactionRepository;
 
     public List<Transaction> getAllTransactions(String accountNumber) {

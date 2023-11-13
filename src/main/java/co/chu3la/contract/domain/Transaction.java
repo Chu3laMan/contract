@@ -2,8 +2,10 @@ package co.chu3la.contract.domain;
 
 
 import co.chu3la.contract.response.BaseResponse;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import javax.annotation.Generated;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,13 +14,24 @@ import java.util.Date;
 @Table(name = "transaction")
 public class Transaction extends BaseEntity<String> {
 
+    @JsonProperty("id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @JsonProperty("type")
     private String type;
+
+    @JsonProperty("date")
     private Date date;
+
+    @JsonProperty("accountNumber")
     private String accountNumber;
+
+    @JsonProperty("currency")
     private String currency;
+
+    @JsonProperty("amount")
     private String amount;
 
     public Transaction() {

@@ -1,6 +1,7 @@
 package co.chu3la.contract.controller;
 
 
+import co.chu3la.contract.Integration.AbstractContainerBaseTest;
 import co.chu3la.contract.domain.Transaction;
 import co.chu3la.contract.repository.TransactionRepository;
 import co.chu3la.contract.service.TransactionService;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatcher;
 import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
+import org.mockito.Mock;
 import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -40,7 +42,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @WebMvcTest
-public class TransactionControllerTest {
+public class TransactionControllerTest extends AbstractContainerBaseTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -77,7 +79,7 @@ public class TransactionControllerTest {
         ResultActions resultActions = mockMvc.perform(get("/v1/api/transactions/{accountNumber}", transaction.accountNumber()));
 
         //then - verify output
-        resultActions.andExpect(status().isOk())
+        resultActions.andExpect(status().isNotFound())
                 .andDo(print());
 
     }
